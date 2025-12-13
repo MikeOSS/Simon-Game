@@ -4,76 +4,52 @@ const blue = document.querySelector("#blue");
 const red = document.querySelector("#red");
 const yellow = document.querySelector("#yellow");
 const history = [];
+const buttons = document.querySelectorAll(".btn");
 //functions
 function playSound(color) {
-    // var audio = new Audio(`sounds/${color}.mp3`);
-    // audio.play();
-    console.log(color);
+  // var audio = new Audio(`sounds/${color}.mp3`);
+  // audio.play();
+  console.log(color);
 }
 
 function callButton() {
-    const randomNumber = Math.floor((Math.random() * 4) + 1);
-
-    history.push(randomNumber);
-
-    for(i=0; i< history.length; i++){
-        if (randomNumber === 1) {
-            playSound('blue');
-            blue.style.transform = 'scale(1.2)';
-            setTimeout(function () {
-                blue.style.transform = 'scale(1.0)';
-            }, 250);
-
-            blue.addEventListener('click', () => {
-                callButton();
-            });
-            green.addEventListener('click', () => {
-                playSound('wrong');
-                return;
-
-            });
-            red.addEventListener('click', () => {
-                playSound('wrong');
-                return;
-            });
-            yellow.addEventListener('click', () => {
-                playSound('wrong');
-                return;
-            });
-
-        } else if (randomNumber === 2) {
-            playSound('green');
-            green.style.transform = 'scale(1.2)';
-            setTimeout(function () {
-                green.style.transform = 'scale(1.0)';
-            }, 250);
-            green.addEventListener('click', () => {
-                callButton();
-            })
-
-        } else if (randomNumber === 3) {
-            playSound('red');
-            red.style.transform = 'scale(1.2)';
-            setTimeout(function () {
-                red.style.transform = 'scale(1.0)';
-            }, 250);
-            red.addEventListener('click', () => {
-                callButton();
-            })
-
-        } else if (randomNumber === 4) {
-            playSound('yellow');
-            yellow.style.transform = 'scale(1.2)';
-            setTimeout(function () {
-                yellow.style.transform = 'scale(1.0)';
-            }, 250);
-            yellow.addEventListener('click', () => {
-                callButton();
-            })
-        }
-    }
+  const randomNumber = Math.floor(Math.random() * 4 + 1);
+  if (randomNumber === 1) {
+    history.push("blue");
+    blue.style.transform = "scale(1.2)";
+    setTimeout(() => {
+      blue.style.transform = "scale(1)";
+    }, 200);
+  } else if (randomNumber === 2) {
+    history.push("green");
+    green.style.transform = "scale(1.2)";
+    setTimeout(() => {
+      green.style.transform = "scale(1)";
+    }, 200);
+  } else if (randomNumber === 3) {
+    history.push("red");
+    red.style.transform = "scale(1.2)";
+    setTimeout(() => {
+      red.style.transform = "scale(1)";
+    }, 200);
+  } else {
+    history.push("yellow");
+    yellow.style.transform = "scale(1.2)";
+    setTimeout(() => {
+      yellow.style.transform = "scale(1)";
+    }, 200);
+  }
+  console.log(history);
 }
 
-callButton();
+for (i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("click", (e) => {
+      console.log(e);
+    });
+  }
 
 
+if (Array.isArray(history) && history.length !== 0) {
+    
+
+}

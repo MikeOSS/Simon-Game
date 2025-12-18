@@ -39,17 +39,24 @@ function callButton() {
       yellow.style.transform = "scale(1)";
     }, 200);
   }
-  console.log(history);
 }
-
+let contador = 0;
 for (i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener("click", (e) => {
-      console.log(e);
-    });
-  }
-
-
-if (Array.isArray(history) && history.length !== 0) {
-    
-
+  buttons[i].addEventListener("click", (e) => {
+    if (e.target.id === history[contador]) {
+      console.log("acerto miseravi");
+      contador++;
+      if (contador === history.length) {
+        contador = 0;
+        callButton();
+      }
+    } else {
+      console.log("errou 06. bora pra próxima");
+      contador = 0;
+      history.length = 0;
+      setTimeout(callButton, 500);
+    }
+  });
 }
+
+callButton();
